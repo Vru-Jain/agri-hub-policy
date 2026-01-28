@@ -1,0 +1,16 @@
+district,state,region,crop,season,predicted_yield,historical_yield,yield_variance_pct,ndvi,soil_moisture,rainfall_actual_mm,rainfall_normal_mm,rainfall_deviation_pct,msp_rate,acreage_ha,risk_zone,mandi_arrival_days,lat,lon
+Nashik,Maharashtra,North Maharashtra,Onion,Rabi,29.77,32.99,-9.76,0.643,0.33,576.7,650,-11.27,1800,42194,False,89,21.098528437324806,77.20780508220246
+Pune,Maharashtra,Western Maharashtra,Sugarcane,Rabi,17.56,17.77,-1.15,0.738,0.4,758.9,720,5.4,340,44188,False,47,19.412726728878614,76.67329502142566
+Nagpur,Maharashtra,Vidarbha,Cotton,Rabi,17.77,22.64,-21.5,0.595,0.192,897.7,980,-8.4,7121,5189,True,76,20.85552788417904,74.39771647510852
+Amravati,Maharashtra,Vidarbha,Soybean,Rabi,21.54,26.85,-19.78,0.369,0.332,813.5,850,-4.29,4892,15627,True,74,20.189864653536617,75.6979155177794
+Aurangabad,Maharashtra,Marathwada,Cotton,Rabi,16.33,22.66,-27.93,0.446,0.355,481.4,680,-29.2,7121,45994,True,50,19.046708263364188,78.28752987222357
+Jalna,Maharashtra,Marathwada,Cotton,Rabi,18.91,21.43,-11.73,0.577,0.159,565.8,620,-8.74,7121,42065,True,76,21.27997659738138,78.09090397099494
+Latur,Maharashtra,Marathwada,Soybean,Rabi,23.71,28.38,-16.46,0.558,0.438,647.5,750,-13.67,4892,22262,True,67,20.260253496991545,79.75678715084896
+Kolhapur,Maharashtra,Western Maharashtra,Sugarcane,Rabi,20.51,22.52,-8.91,0.469,0.2,1103.9,1100,0.35,340,7027,False,22,18.516566351370805,78.70822999918384
+Sangli,Maharashtra,Western Maharashtra,Sugarcane,Rabi,29.76,29.23,1.84,0.659,0.172,611.0,580,5.34,340,27662,False,87,20.369894380482673,75.31628617396855
+Ahmednagar,Maharashtra,Western Maharashtra,Onion,Rabi,20.08,24.19,-17.0,0.48,0.369,380.5,520,-26.82,1800,10056,False,61,20.639734361668985,78.32549534031828
+Najafgarh,Delhi,Najafgarh Zone,Vegetables,Rabi,25.74,29.63,-13.14,0.548,0.307,637.4,650,-1.94,2500,46523,True,18,28.853783236963046,76.94957533748932
+Yamuna Floodplain North,Delhi,Yamuna Floodplain,Vegetables,Rabi,23.74,29.8,-20.34,0.442,0.173,615.5,680,-9.48,2500,48585,True,56,28.804060189782206,77.18004225390625
+Yamuna Floodplain South,Delhi,Yamuna Floodplain,Flowers,Rabi,29.01,32.64,-11.12,0.425,0.418,772.3,680,13.57,8000,20707,True,76,28.455025962263836,76.93676109752516
+Alipur,Delhi,North Delhi,Vegetables,Rabi,29.81,31.64,-5.78,0.694,0.152,566.4,620,-8.64,2500,8748,False,65,28.53470616689926,76.94647531334866
+Narela,Delhi,North Delhi,Wheat,Rabi,17.63,21.18,-16.8,0.573,0.271,470.5,600,-21.59,2585,22675,False,53,28.648624252946192,76.98052698589007
