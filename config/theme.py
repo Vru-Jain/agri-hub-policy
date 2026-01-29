@@ -22,17 +22,17 @@ def get_theme_css(state: str) -> str:
         primary_gradient = "linear-gradient(135deg, #ff6b35 0%, #9b59b6 50%, #6c3483 100%)"
         accent_color = "#ff6b35"
         secondary_color = "#9b59b6"
-        glow_color = "rgba(255, 107, 53, 0.4)"
-        card_bg = "rgba(155, 89, 182, 0.15)"
-        border_color = "rgba(255, 107, 53, 0.3)"
+        glow_color = "rgba(255, 107, 53, 0.2)"
+        card_bg = "rgba(255, 255, 255, 0.85)"
+        border_color = "rgba(255, 107, 53, 0.2)"
     else:
         # Modern Metro: Steel Blue and Cool Gray
         primary_gradient = "linear-gradient(135deg, #2c3e50 0%, #3498db 50%, #1abc9c 100%)"
         accent_color = "#3498db"
         secondary_color = "#1abc9c"
-        glow_color = "rgba(52, 152, 219, 0.4)"
-        card_bg = "rgba(52, 152, 219, 0.15)"
-        border_color = "rgba(26, 188, 156, 0.3)"
+        glow_color = "rgba(52, 152, 219, 0.2)"
+        card_bg = "rgba(255, 255, 255, 0.85)"
+        border_color = "rgba(26, 188, 156, 0.2)"
     
     return f"""
     <style>
@@ -47,21 +47,22 @@ def get_theme_css(state: str) -> str:
             --glow-color: {glow_color};
             --card-bg: {card_bg};
             --border-color: {border_color};
-            --dark-bg: #0a0a0f;
-            --card-dark: rgba(20, 20, 30, 0.85);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
+            --dark-bg: #f8f9fa;
+            --card-dark: rgba(255, 255, 255, 0.95);
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
         }}
         
         /* Global Styles */
         .stApp {{
-            background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
             font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
         }}
         
         /* Sidebar Styling */
         section[data-testid="stSidebar"] {{
-            background: linear-gradient(180deg, rgba(20, 20, 35, 0.95) 0%, rgba(10, 10, 20, 0.98) 100%);
+            background: #ffffff;
             border-right: 1px solid var(--border-color);
         }}
         
@@ -101,7 +102,7 @@ def get_theme_css(state: str) -> str:
             border-radius: 16px;
             padding: 1.5rem;
             margin: 1rem 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }}
         
@@ -124,18 +125,19 @@ def get_theme_css(state: str) -> str:
         
         /* Metric Cards */
         .metric-card {{
-            background: linear-gradient(135deg, var(--card-bg), rgba(0, 0, 0, 0.3));
+            background: linear-gradient(135deg, var(--card-bg), rgba(255, 255, 255, 0.5));
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 1.25rem;
             text-align: center;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }}
         
         .metric-card:hover {{
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px var(--glow-color);
+            box-shadow: 0 8px 15px var(--glow-color);
         }}
         
         .metric-value {{
