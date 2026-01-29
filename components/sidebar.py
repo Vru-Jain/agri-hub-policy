@@ -96,7 +96,7 @@ def render_sidebar() -> Tuple[str, bool, int, str]:
         
         st.markdown("---")
         st.markdown(f"""
-        <div style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.75rem;">
+        <div style="text-align: center; color: var(--text-secondary); font-size: 0.75rem;">
             Last Updated: {datetime.now().strftime('%d %b %Y, %H:%M IST')}
         </div>
         """, unsafe_allow_html=True)

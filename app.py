@@ -80,7 +80,7 @@ def main():
     # Footer
     st.markdown("---")
     st.markdown("""
-    <div style="text-align: center; color: rgba(255,255,255,0.4); font-size: 0.8rem; padding: 1rem;">
+    <div style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; padding: 1rem;">
         <p>Sovereign Agri-Policy Hub v1.0 | Built for Digital India Initiative</p>
         <p>Data Sources: IMD, ICAR, Ministry of Agriculture & Farmers Welfare</p>
         <p>© 2026 Government of India | All Rights Reserved</p>

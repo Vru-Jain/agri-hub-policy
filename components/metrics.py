@@ -85,7 +85,7 @@ def render_key_metrics(state_df: pd.DataFrame, selected_state: str) -> None:
         """, unsafe_allow_html=True)
     
     with col3:
-        variance_color = "#e74c3c" if avg_variance < -5 else "#2ecc71"
+        variance_color = "#c0392b" if avg_variance < -5 else "#27ae60"
         st.markdown(f"""
         <div class="metric-card">
             <div class="metric-value" style="color: {variance_color}">{avg_variance:+.1f}%</div>

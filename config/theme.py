@@ -18,26 +18,26 @@ def get_theme_css(state: str) -> str:
         Complete CSS string with theme variables and styles
     """
     if state == "Maharashtra":
-        # Sahyadri Sunset: Deep Oranges and Purples
-        primary_gradient = "linear-gradient(135deg, #ff6b35 0%, #9b59b6 50%, #6c3483 100%)"
-        accent_color = "#ff6b35"
-        secondary_color = "#9b59b6"
-        glow_color = "rgba(255, 107, 53, 0.2)"
-        card_bg = "rgba(255, 255, 255, 0.85)"
-        border_color = "rgba(255, 107, 53, 0.2)"
+        # Sahyadri Sunset: Deep Oranges and Purples - High Contrast
+        primary_gradient = "linear-gradient(135deg, #e65100 0%, #8e44ad 100%)" # Darker orange/purple
+        accent_color = "#d35400" # Darker orange for text
+        secondary_color = "#8e44ad"
+        glow_color = "rgba(230, 81, 0, 0.15)" # Subtle glow
+        card_bg = "rgba(255, 255, 255, 0.98)" # Almost solid
+        border_color = "rgba(230, 81, 0, 0.3)" # More visible border
     else:
-        # Modern Metro: Steel Blue and Cool Gray
-        primary_gradient = "linear-gradient(135deg, #2c3e50 0%, #3498db 50%, #1abc9c 100%)"
-        accent_color = "#3498db"
-        secondary_color = "#1abc9c"
-        glow_color = "rgba(52, 152, 219, 0.2)"
-        card_bg = "rgba(255, 255, 255, 0.85)"
-        border_color = "rgba(26, 188, 156, 0.2)"
+        # Modern Metro: Steel Blue and Cool Gray - High Contrast
+        primary_gradient = "linear-gradient(135deg, #2c3e50 0%, #2980b9 100%)" # Darker blue gradient
+        accent_color = "#2980b9" # Darker blue for text
+        secondary_color = "#16a085" # Darker teal
+        glow_color = "rgba(41, 128, 185, 0.15)" # Subtle glow
+        card_bg = "rgba(255, 255, 255, 0.98)" # Almost solid
+        border_color = "rgba(44, 62, 80, 0.3)" # More visible border
     
     return f"""
     <style>
         /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
         
         /* Root Variables */
         :root {{
@@ -48,9 +48,9 @@ def get_theme_css(state: str) -> str:
             --card-bg: {card_bg};
             --border-color: {border_color};
             --dark-bg: #f8f9fa;
-            --card-dark: rgba(255, 255, 255, 0.95);
-            --text-primary: #1a1a1a;
-            --text-secondary: #555555;
+            --card-dark: #ffffff; /* Solid white */
+            --text-primary: #000000; /* Pure black for max contrast */
+            --text-secondary: #333333; /* Dark gray for secondary text */
         }}
         
         /* Global Styles */

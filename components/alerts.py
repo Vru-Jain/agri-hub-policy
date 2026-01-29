@@ -64,9 +64,9 @@ def render_executive_dashboard(state_df: pd.DataFrame) -> None:
             <div class="intervention-card status-{status}">
                 <div class="intervention-title">
                     <span class="status-dot dot-{status}"></span>
-                    <span style="color: white;">{row['district']}</span>
+                    <span style="color: #333333; font-weight: 700;">{row['district']}</span>
                 </div>
-                <p style="color: rgba(255,255,255,0.8); margin: 0.5rem 0; font-size: 0.85rem;">
+                <p style="color: #444444; margin: 0.5rem 0; font-size: 0.85rem;">
                     <b>Crop:</b> {row['crop']}<br>
                     <b>Status:</b> {label}<br>
                     <b>Yield Variance:</b> {row['yield_variance_pct']:+.1f}%<br>
