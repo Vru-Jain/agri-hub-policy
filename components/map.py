@@ -96,7 +96,8 @@ def create_folium_map(_df: pd.DataFrame, state: str) -> folium.Map:
             ).add_to(m)
     
     # Add heatmap layer based on yield variance (inverted - lower yield = higher heat)
-    heat_data = [[row['lat'], row['lon'], max(0, -row['yield_variance_pct'])] 
+    # Scaled by 10x to ensure visibility even for 5-10% variance
+    heat_data = [[row['lat'], row['lon'], max(0, -row['yield_variance_pct']) * 10] 
                  for _, row in state_df.iterrows()]
     
     if heat_data:
