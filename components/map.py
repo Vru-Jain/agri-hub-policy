@@ -36,11 +36,11 @@ def create_folium_map(_df: pd.DataFrame, state: str) -> folium.Map:
         zoom = 10
         highlight_regions = ['Najafgarh Zone', 'Yamuna Floodplain']
     
-    # Create base map with dark theme
+    # Create base map with light theme for better visibility
     m = folium.Map(
         location=center,
         zoom_start=zoom,
-        tiles='CartoDB dark_matter'
+        tiles='CartoDB positron'
     )
     
     # Filter data for selected state
