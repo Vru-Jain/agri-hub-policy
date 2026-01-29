@@ -30,6 +30,8 @@ def get_api_keys() -> Dict[str, Optional[str]]:
         'sentinel_hub_client_id': os.getenv('SENTINEL_HUB_CLIENT_ID'),
         'sentinel_hub_client_secret': os.getenv('SENTINEL_HUB_CLIENT_SECRET'),
         'data_gov_api_key': os.getenv('DATA_GOV_API_KEY'),
+        'kaggle_username': os.getenv('KAGGLE_USERNAME'),
+        'kaggle_key': os.getenv('KAGGLE_KEY'),
     }
 
 
@@ -70,3 +72,19 @@ def get_data_gov_key() -> Optional[str]:
         API key string or None if not configured
     """
     return get_api_keys()['data_gov_api_key']
+
+
+def get_kaggle_credentials() -> Optional[Dict[str, str]]:
+    """
+    Get Kaggle API credentials.
+    
+    Returns:
+        Dict with username and key, or None if not configured
+    """
+    keys = get_api_keys()
+    if keys['kaggle_username'] and keys['kaggle_key']:
+        return {
+            'username': keys['kaggle_username'],
+            'key': keys['kaggle_key'],
+        }
+    return None

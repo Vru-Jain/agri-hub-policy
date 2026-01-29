@@ -1,0 +1,5 @@
+# This file ensures the checkpoints directory is tracked by git
+# while ignoring the actual model files (which are too large)
+# 
+# To regenerate model files, run:
+#   python models/train.py

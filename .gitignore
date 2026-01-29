@@ -43,6 +43,21 @@ Thumbs.db
 # Data (keep simulated_data.csv but ignore large data files)
 *.db
 *.sqlite
+data/kaggle_cache/
 
-# Environment secrets
+# Environment secrets - CRITICAL: Never commit these!
 .env
+kaggle.json
+*.json.bak
+
+# ML Model files (too large for git, regenerate with train.py)
+models/checkpoints/*.pt
+models/checkpoints/*.pth
+*.pt
+*.pth
+!models/checkpoints/.gitkeep
+
+# Logs and temp files
+*.log
+*.tmp
+.cache/
