@@ -43,3 +43,6 @@ Thumbs.db
 # Data (keep simulated_data.csv but ignore large data files)
 *.db
 *.sqlite
+
+# Environment secrets
+.env

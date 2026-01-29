@@ -2,12 +2,19 @@
 Sidebar Component for Sovereign Agri-Policy Hub.
 
 Renders the sidebar with state selector, executive view toggle,
-monsoon deviation slider, and season selector.
+monsoon deviation slider, season selector, and data mode indicator.
 """
 
 import streamlit as st
 from datetime import datetime
 from typing import Tuple
+
+# Import data mode checker
+try:
+    from utils.data_loader import get_current_data_mode
+    DATA_MODE_AVAILABLE = True
+except ImportError:
+    DATA_MODE_AVAILABLE = False
 
 
 def render_sidebar() -> Tuple[str, bool, int, str]:
@@ -23,6 +30,28 @@ def render_sidebar() -> Tuple[str, bool, int, str]:
     """
     with st.sidebar:
         st.markdown("### Control Panel")
+        
+        # Data Mode Indicator
+        if DATA_MODE_AVAILABLE:
+            mode = get_current_data_mode()
+            if mode == 'LIVE':
+                st.markdown("""
+                <div style="background: linear-gradient(90deg, #27ae60, #2ecc71); 
+                            padding: 0.5rem 1rem; border-radius: 20px; text-align: center;
+                            margin-bottom: 1rem; font-weight: 600; font-size: 0.85rem;">
+                    LIVE DATA
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown("""
+                <div style="background: linear-gradient(90deg, #f39c12, #e67e22); 
+                            padding: 0.5rem 1rem; border-radius: 20px; text-align: center;
+                            margin-bottom: 1rem; font-weight: 600; font-size: 0.85rem;
+                            cursor: help;" title="Add API keys to .env for live data">
+                    DEMO MODE
+                </div>
+                """, unsafe_allow_html=True)
+        
         st.markdown("---")
         
         # State selector

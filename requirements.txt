@@ -9,3 +9,8 @@ torch>=2.1.0
 rasterio>=1.3.0
 scipy>=1.11.0
 branca>=0.7.0
+
+# Live data integration
+python-dotenv>=1.0.0
+httpx>=0.26.0
+sentinelhub>=3.10.0
