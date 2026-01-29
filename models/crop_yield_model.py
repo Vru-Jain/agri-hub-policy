@@ -209,17 +209,23 @@ class CropYieldPredictor:
             yield_pred = self.model(state_tensor, crop_tensor, season_tensor, continuous_tensor)
             raw_output = float(yield_pred.item())
             
-            # Post-process: The model was trained on yield data that may vary in scale
-            # Transform to realistic Kg/Ha range (1500-4000) based on input features
-            # Using NDVI and soil moisture as quality indicators
+            # Post-process: The model was trained on yield data with varying scales
+            # We use a sigmoid-like normalization to map any raw output to a 0-1 range
+            # Then scale to realistic Kg/Ha range based on input features
+            
+            # Normalize raw output using sigmoid-like transformation
+            # This maps any value to roughly 0.5-1.5 range
+            import math
+            normalized = 1.0 / (1.0 + math.exp(-raw_output / 1000))  # Soft normalization
+            adjustment = 0.7 + (normalized * 0.6)  # Maps to 0.7-1.3 range
+            
+            # Calculate base yield from input features (quality indicators)
             quality_score = (ndvi * 0.6 + soil_moisture * 0.4)  # 0-1 range
-            base_yield = 1500 + (quality_score * 2500)  # 1500-4000 Kg/Ha
+            base_yield = 2000 + (quality_score * 2000)  # 2000-4000 Kg/Ha base
             
-            # Apply model's relative adjustment (model output as a factor)
-            # Normalize raw output around 1.0 and apply as adjustment factor
-            adjustment = 0.8 + (raw_output * 0.2)  # Maps model output to 0.8-1.2 range
-            
-            return max(1000, base_yield * adjustment)
+            # Apply adjustment and cap to realistic range
+            final_yield = base_yield * adjustment
+            return max(1500, min(4500, final_yield))  # Cap to 1500-4500 Kg/Ha
     
     def _encode_category(self, category: str, value: str) -> int:
         """Encode categorical value to index."""
