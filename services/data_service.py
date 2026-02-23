@@ -238,21 +238,23 @@ def get_district_data(use_cache: bool = True) -> pd.DataFrame:
     logger.info(f"Loading data in {mode} mode")
     
     if mode == 'LIVE':
-        # Try to fetch live data
-        for district, config in MAHARASHTRA_DISTRICTS.items():
-            live_data = _fetch_live_district_data(district, config, 'Maharashtra')
-            if live_data:
-                data.append(live_data)
-            else:
-                # Fallback to simulated for this district
-                data.append(_generate_simulated_district(district, config, 'Maharashtra'))
+        from concurrent.futures import ThreadPoolExecutor
+        import streamlit as st
         
-        for district, config in DELHI_DISTRICTS.items():
-            live_data = _fetch_live_district_data(district, config, 'Delhi')
+        def process_district(district, config, state):
+            live_data = _fetch_live_district_data(district, config, state)
             if live_data:
-                data.append(live_data)
-            else:
-                data.append(_generate_simulated_district(district, config, 'Delhi'))
+                return live_data
+            return _generate_simulated_district(district, config, state)
+            
+        # Parallelize API calls for faster dashboard loading
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            maharashtra_tasks = [executor.submit(process_district, d, c, 'Maharashtra') for d, c in MAHARASHTRA_DISTRICTS.items()]
+            delhi_tasks = [executor.submit(process_district, d, c, 'Delhi') for d, c in DELHI_DISTRICTS.items()]
+            
+            # Gather results
+            data.extend([t.result() for t in maharashtra_tasks])
+            data.extend([t.result() for t in delhi_tasks])
     else:
         # Demo mode - try to load cached CSV first
         if use_cache:

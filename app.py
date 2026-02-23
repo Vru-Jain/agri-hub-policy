@@ -33,8 +33,9 @@ st.set_page_config(
 
 def main():
     """Main application entry point."""
-    # Load data
-    df = load_data()
+    # Load data with a spinner for better UX
+    with st.spinner("Initializing Sovereign Agri-Policy Hub... Fetching live intelligence..."):
+        df = load_data()
     
     # Render sidebar and get user selections
     selected_state, executive_view, monsoon_adjust, selected_season = render_sidebar()

@@ -19,19 +19,44 @@ except ImportError:
     pass
 
 
+def _clean_key(val: Optional[str]) -> Optional[str]:
+    """Clean and validate API keys to ignore placeholders."""
+    if not val:
+        return None
+    val = str(val).strip()
+    lower_val = val.lower()
+    # Ignore common placeholder strings
+    if lower_val in ["", "none", "null"] or "your_" in lower_val or "replace_" in lower_val:
+        return None
+    return val
+
+
 def get_api_keys() -> Dict[str, Optional[str]]:
     """
-    Retrieve all API keys from environment variables.
+    Retrieve all API keys from environment variables or Streamlit secrets.
     
     Returns:
         Dictionary containing API keys (values may be None if not set)
     """
+    st_secrets = {}
+    try:
+        import streamlit as st
+        # Safely access st.secrets
+        for key in ["SENTINEL_HUB_CLIENT_ID", "SENTINEL_HUB_CLIENT_SECRET", "DATA_GOV_API_KEY", "KAGGLE_USERNAME", "KAGGLE_KEY"]:
+            try:
+                if key in st.secrets:
+                    st_secrets[key] = st.secrets[key]
+            except Exception:
+                pass
+    except ImportError:
+        pass
+
     return {
-        'sentinel_hub_client_id': os.getenv('SENTINEL_HUB_CLIENT_ID'),
-        'sentinel_hub_client_secret': os.getenv('SENTINEL_HUB_CLIENT_SECRET'),
-        'data_gov_api_key': os.getenv('DATA_GOV_API_KEY'),
-        'kaggle_username': os.getenv('KAGGLE_USERNAME'),
-        'kaggle_key': os.getenv('KAGGLE_KEY'),
+        'sentinel_hub_client_id': _clean_key(os.getenv('SENTINEL_HUB_CLIENT_ID') or st_secrets.get('SENTINEL_HUB_CLIENT_ID')),
+        'sentinel_hub_client_secret': _clean_key(os.getenv('SENTINEL_HUB_CLIENT_SECRET') or st_secrets.get('SENTINEL_HUB_CLIENT_SECRET')),
+        'data_gov_api_key': _clean_key(os.getenv('DATA_GOV_API_KEY') or st_secrets.get('DATA_GOV_API_KEY')),
+        'kaggle_username': _clean_key(os.getenv('KAGGLE_USERNAME') or st_secrets.get('KAGGLE_USERNAME')),
+        'kaggle_key': _clean_key(os.getenv('KAGGLE_KEY') or st_secrets.get('KAGGLE_KEY')),
     }
 
 
