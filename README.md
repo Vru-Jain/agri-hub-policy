@@ -6,20 +6,20 @@ A high-performance Streamlit dashboard providing real-time agricultural policy a
 
 ---
 
-## ✨ Features
+##  Features
 
 | Feature | Description |
 |---------|-------------|
-| 🧠 **LSTM Yield Predictions** | PyTorch model trained on 19,000+ crop records from Kaggle |
-| 🛰️ **Satellite Imagery** | Sentinel Hub integration for NDVI and vegetation analysis |
-| 📊 **Live Market Prices** | Real-time mandi prices from Data.gov.in (Agmarknet) |
-| 🗺️ **Geospatial Heatmaps** | Interactive Folium maps with district-level risk visualization |
-| 💰 **MSP Rate Display** | Current Minimum Support Prices for all major crops |
-| 📈 **Executive Dashboard** | Intervention status cards with revenue impact analysis |
+|  **LSTM Yield Predictions** | PyTorch model trained on 19,000+ crop records from Kaggle |
+|  **Satellite Imagery** | Sentinel Hub integration for NDVI and vegetation analysis |
+|  **Live Market Prices** | Real-time mandi prices from Data.gov.in (Agmarknet) |
+|  **Geospatial Heatmaps** | Interactive Folium maps with district-level risk visualization |
+|  **MSP Rate Display** | Current Minimum Support Prices for all major crops |
+|  **Executive Dashboard** | Intervention status cards with revenue impact analysis |
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Clone and Install
 
@@ -60,7 +60,7 @@ streamlit run app.py
 
 ---
 
-## 🔑 API Setup
+##  API Setup
 
 | Service | Purpose | How to Get |
 |---------|---------|------------|
@@ -72,7 +72,7 @@ streamlit run app.py
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 agri-hub-policy/
@@ -115,7 +115,7 @@ agri-hub-policy/
 
 ---
 
-## 🤖 ML Model
+##  ML Model
 
 The crop yield prediction model uses a **PyTorch LSTM** architecture with:
 
@@ -146,7 +146,7 @@ result = get_yield_prediction(
 
 ---
 
-## 🔒 Security Notes
+##  Security Notes
 
 - **Never commit `.env`** - Contains API secrets (already in `.gitignore`)
 - **Model checkpoints are gitignored** - Regenerate with `train.py`
@@ -154,7 +154,7 @@ result = get_yield_prediction(
 
 ---
 
-## 📊 Data Sources
+##  Data Sources
 
 | Source | Data Type |
 |--------|-----------|
@@ -165,7 +165,7 @@ result = get_yield_prediction(
 
 ---
 
-## ⚡ Performance
+##  Performance
 
 The dashboard uses Streamlit caching for optimal performance:
 
@@ -174,8 +174,6 @@ The dashboard uses Streamlit caching for optimal performance:
 
 ---
 
-## 📄 License
+##  License
 
-© 2026 Government of India | All Rights Reserved
-
-Built for the Digital India Initiative
+© 2026 Government of India | All Rights Reserved. Built for the Digital India Initiative
